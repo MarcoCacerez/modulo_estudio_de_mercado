@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CapturarResultadosController;
 use App\Http\Controllers\ConceptoController;
 use Illuminate\Support\Facades\Route;
 
@@ -149,6 +150,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::patch('/estudios/{estudio}/conceptos/{concepto}', 'update')->name('conceptos.update');
         Route::delete('/estudios/{estudio}/conceptos/{concepto}', 'destroy')->name('conceptos.destroy');
     });
+
+    Route::controller(CapturarResultadosController::class)->group(function () {
+        Route::get('/estudios/{estudio}/resultados/', 'index')->name('resultados.index');
+        Route::patch('/estudios/{estudio}/resultados/{concepto}', 'update')->name('resultados.update');
+    });
 });
+
+
+
 
 require __DIR__ . '/auth.php';
