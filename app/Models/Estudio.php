@@ -11,7 +11,8 @@ class Estudio extends Model
 
     protected $guarded = [];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
@@ -23,5 +24,10 @@ class Estudio extends Model
     public function conclusion()
     {
         return $this->hasOne(Conclusion::class);
+    }
+
+    public function conceptos()
+    {
+        return $this->hasMany(Concepto::class);
     }
 }

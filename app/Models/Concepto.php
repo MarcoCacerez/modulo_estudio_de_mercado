@@ -9,4 +9,9 @@ class Concepto extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function estudio()
+    {
+        return $this->belongsTo(Estudio::class);
+    }
 }

@@ -18,23 +18,23 @@ class ConclusionController extends Controller
     {
         return view('conclusion.create', compact('estudio'));
     }
-    public function store(Estudio $estudio){
+
+    public function store(Estudio $estudio)
+    {
         $data = request()->validate([
             'conclusion' => 'required',
         ]);
 
         $conclusion = $estudio->conclusion()->create($data);
 
-        return redirect('/estudios/'.$estudio->id.'/conclusion/mostrar');
+        return redirect('/estudios/' . $estudio->id . '/conclusion/mostrar');
     }
 
     public function update(Request $request, Estudio $estudio)
     {
         $conclusion = Conclusion::find($estudio->conclusion->id);
         $input = $request->all();
-        //print_r($input);
-
         $conclusion->update($input);
-        return redirect('/estudios/'.$estudio->id.'/conclusion/mostrar');
+        return redirect('/estudios/' . $estudio->id . '/conclusion/mostrar');
     }
 }

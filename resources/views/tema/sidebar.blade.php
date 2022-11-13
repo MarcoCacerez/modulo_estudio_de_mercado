@@ -10,6 +10,7 @@
         <!--Bootstrap-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@yield('title', 'Default content')</title>
     </head>
     <body>
     <div class="sidebar">
@@ -26,7 +27,7 @@
                 <span class="tooltip">Detalles del estudio</span>
             </li>
             <li>
-                <a href="{{ route('concepto.index',['estudio' => $estudio]) }}">
+                <a href="{{ route('conceptos.index',['estudio' => $estudio]) }}">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Conceptos</span>
                 </a>
@@ -60,7 +61,7 @@
                 </a>
                 <span class="tooltip">Imprimir resultados</span>
             </li>
-        
+
             <li class="profile">
                 <div class="profile-details">
                 <div class="name_job">

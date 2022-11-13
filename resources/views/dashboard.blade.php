@@ -7,7 +7,7 @@
                 </h2>
             </div>
             <div>
-                <a href="/estudios/crear" 
+                <a href="/estudios/crear"
                 class="text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 font-bold focus:ring-blue-300 rounded-lg text-base px-5 py-2.5 mr-2 mb-2">
                     Crear estudio de mercado
                 </a>
@@ -24,10 +24,10 @@
                         <section class="md:h-full flex items-center text-gray-600">
                             <div class="container px-5 py-14 mx-auto">
                                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    @foreach ($estudios as $estudio)  
+                                    @foreach ($estudios as $estudio)
 
-                                        <div class="m-1 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">    
-                                            <div class="h-full rounded-lg overflow-hidden">                                                
+                                        <div class="m-1 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
+                                            <div class="h-full rounded-lg overflow-hidden">
                                                 <div class="p-6">
                                                     <h1 class="text-2xl font-semibold mb-3">{{ $estudio->nombre }}</h1>
                                                     <h2 class="text-base font-medium text-blue-400 mb-1">Creado el: {{ $estudio->created_at->format('d/m/Y') }}</h2>
@@ -52,7 +52,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>  
+                                        </div>
 
                                     @endforeach
                                 </div>

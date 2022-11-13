@@ -28,9 +28,9 @@
                         @csrf
                         <div class="mb-6">
                             <label for="conclusion" class="block mb-2 text-sm font-medium text-gray-900"></label>
-                            <textarea name="conclusion" id="conclusion" rows="12" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" 
+                            <textarea name="conclusion" id="conclusion" rows="12" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Ingrese la conclusión del estudio a la que se llegó tras hacer las investigaciones"></textarea>
-                            @error('objetivo')
+                            @error('conclusion')
                                 <small>{{ $message }}</small>
                             @enderror
                         </div>

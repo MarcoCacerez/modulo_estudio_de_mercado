@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Concepto;
 use App\Models\Estudio;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class ConceptoController extends Controller
 
     public function index(Estudio $estudio)
     {
-        return view('concepto.index',compact('estudio'));
+        $estudio->load('conceptos');
+        return view('concepto.index', compact('estudio'));
     }
 
     /**
@@ -25,7 +27,7 @@ class ConceptoController extends Controller
      */
     public function create(Estudio $estudio)
     {
-        return view('concepto.create',compact('estudio'));
+        return view('concepto.create', compact('estudio'));
     }
 
     /**
@@ -34,9 +36,15 @@ class ConceptoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Estudio $estudio)
     {
-        //
+        $datos = $request->validate([
+            'concepto' => 'required',
+        ]);
+
+        $concepto = $estudio->conceptos()->create($datos);
+
+        return redirect()->route('conceptos.index', ['estudio' => $estudio]);
     }
 
     /**
@@ -45,9 +53,9 @@ class ConceptoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Estudio $estudio, Concepto $concepto)
     {
-        //
+        return view('concepto.show', ['estudio' => $estudio, 'concepto' => $concepto]);
     }
 
     /**
@@ -68,9 +76,15 @@ class ConceptoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Estudio $estudio, Concepto $concepto)
     {
-        //
+        $data = $request->validate([
+            'concepto' => 'required',
+        ]);
+
+        $concepto->update($data);
+
+        return view('concepto.index', ['estudio' => $estudio]);
     }
 
     /**

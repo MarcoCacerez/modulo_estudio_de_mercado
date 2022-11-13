@@ -129,14 +129,26 @@ Route::post(
 )->middleware(['auth', 'verified'])->name('conclusion.store');
 
 //-------CONCEPTO
-Route::get(
-    '/estudios/{estudio}/concepto/',
-    [ConceptoController::class,'index']
-)->middleware(['auth', 'verified'])->name('concepto.index');
+// Route::get(
+//     '/estudios/{estudio}/concepto/',
+//     [ConceptoController::class,'index']
+// )->middleware(['auth', 'verified'])->name('concepto.index');
 
-Route::get(
-    '/estudios/{estudio}/concepto/crear',
-    [ConceptoController::class,'create']
-)->middleware(['auth', 'verified'])->name('concepto.create');
+// Route::get(
+//     '/estudios/{estudio}/concepto/crear',
+//     [ConceptoController::class,'create']
+// )->middleware(['auth', 'verified'])->name('concepto.create');
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::controller(ConceptoController::class)->group(function () {
+        Route::get('/estudios/{estudio}/conceptos/', 'index')->name('conceptos.index');
+        Route::get('/estudios/{estudio}/conceptos/crear', 'create')->name('conceptos.create');
+        Route::post('/estudios/{estudio}/conceptos/', 'store')->name('conceptos.store');
+        Route::get('/estudios/{estudio}/conceptos/{concepto}', 'show')->name('conceptos.show');
+        Route::get('/estudios/{estudio}/conceptos/{concepto}/editar', 'edit')->name('conceptos.edit');
+        Route::patch('/estudios/{estudio}/conceptos/{concepto}', 'update')->name('conceptos.update');
+        Route::delete('/estudios/{estudio}/conceptos/{concepto}', 'destroy')->name('conceptos.destroy');
+    });
+});
+
+require __DIR__ . '/auth.php';
