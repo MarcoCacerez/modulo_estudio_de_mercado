@@ -4,6 +4,8 @@ use App\Http\Controllers\CapturarResultadosController;
 use App\Http\Controllers\ConceptoController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PDFController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -157,7 +159,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 });
 
-
-
+Route::get(
+    '/estudios/{estudio}/generate-pdf', [PDFController::class, 'generatePDF']
+)->middleware(['auth', 'verified'])->name('pdf.generate');
 
 require __DIR__ . '/auth.php';
