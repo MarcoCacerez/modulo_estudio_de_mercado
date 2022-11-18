@@ -26,6 +26,6 @@ class PDFController extends Controller
             
         $pdf = PDF::loadView('pdf/myPDF', $data);
      
-        return $pdf->download('resultados.pdf');
+        return $pdf->stream('resultados.pdf');
     }
 }

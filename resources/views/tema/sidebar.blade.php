@@ -58,11 +58,11 @@
                 <span class="tooltip">Agregar conclusión</span>
             </li>
             <li>
-                <a href="/estudios/{{ $estudio->id }}/generate-pdf">
+                <a href="/estudios/{{ $estudio->id }}/generate-pdf" target="_blank">
                     <i class='bx bx-download'></i>
-                    <span class="links_name">Descargar resultados</span>
+                    <span class="links_name">Ver resultados</span>
                 </a>
-                <span class="tooltip">Descargar resultados</span>
+                <span class="tooltip">Ver resultados</span>
             </li>
 
             <li class="profile">
