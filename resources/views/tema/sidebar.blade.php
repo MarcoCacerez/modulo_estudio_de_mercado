@@ -23,7 +23,7 @@
         </div>
         <ul class="nav-list">
             <li>
-                <a href="/estudios/{{ $estudio->id }}/detalles">
+                <a href="{{ route('estudios.show',['estudio'=>$estudio])  }}">
                     <i class='bx bx-cog'></i>
                     <span class="links_name">Detalles del estudio</span>
                 </a>
@@ -37,7 +37,7 @@
                 <span class="tooltip">Conceptos</span>
             </li>
             <li>
-                <a href="/estudios/{{ $estudio->id }}/encuestas/mostrar">
+                <a href="{{ route('polls.index', ['estudio' => $estudio]) }}">
                     <i class='bx bx-poll'></i>
                     <span class="links_name">Encuestas</span>
                 </a>
@@ -51,14 +51,14 @@
                 <span class="tooltip">Capturar resultados</span>
             </li>
             <li>
-                <a href="/estudios/{{ $estudio->id }}/conclusion/mostrar">
+                <a href="{{ route('conclusion.index', ['estudio' => $estudio]) }}">
                     <i class='bx bx-pie-chart-alt-2'></i>
                     <span class="links_name">Agregar conclusión</span>
                 </a>
                 <span class="tooltip">Agregar conclusión</span>
             </li>
             <li>
-                <a href="/estudios/{{ $estudio->id }}/generate-pdf" target="_blank">
+                <a href="{{ route('pdf.generate', ['estudio' => $estudio]) }}" target="_blank">
                     <i class='bx bx-download'></i>
                     <span class="links_name">Ver resultados</span>
                 </a>

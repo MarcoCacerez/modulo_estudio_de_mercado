@@ -17,7 +17,7 @@
                             Editar
                         </button>
                     </a>
-                    <a href="/estudios/{{ $estudio->id }}/conclusion/crear" id="btn_crear" style="display: none">
+                    <a href="{{ route('conclusion.create',['estudio'=>$estudio]) }}" id="btn_crear" style="display: none">
                         <button class="text-white text-base bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 text-center mr-3 md:mr-0" name="check" id="check" value="1">
                             Crear conclusion
                         </button>
@@ -50,7 +50,7 @@
                     </div>
 
                     <div id="edit" style="display: none;">
-                        <form action="/estudios/{{ $estudio->id }}/conclusion/actualizar" method="post">
+                        <form action="{{ route('conclusion.update',['estudio'=>$estudio]) }}" method="post">
                             @method('PATCH')
                             @csrf
                             <div class="mb-6">

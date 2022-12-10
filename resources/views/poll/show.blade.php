@@ -9,12 +9,12 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight m-3">
             {{ $encuesta->titulo }}
         </h2>
-        <a href="/estudios/{{ $estudio->id }}/encuestas/{{ $encuesta->id }}/preguntas/crear">
+        <a href="{{ route('preguntas.create',['estudio'=>$estudio,'encuesta'=>$encuesta])  }}">
             <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded text-base">
                 Crear pregunta
             </button>
         </a>
-        <a href="/estudios/{{ $estudio->id }}/formularios/{{ $encuesta->id }}-{{ Str::slug($encuesta->titulo) }}">
+        <a href="{{ route('formulario.show',['estudio'=>$estudio,'encuesta'=>$encuesta,'slug'=>Str::slug($encuesta->titulo)]) }}">
             <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded text-base">
                 Contestar encuesta
             </button>
@@ -33,10 +33,10 @@
                                 </div>
                                 <div class="flex flex-row mb-6">
                                     <div>
-                                        <a href="/estudios/{{ $estudio->id }}/encuestas/{{ $encuesta->id }}/preguntas/{{ $pregunta->id }}/editar" class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">Editar</a>
+                                        <a href="{{ route('preguntas.edit',['estudio'=>$estudio,'encuesta'=>$encuesta,'pregunta'=>$pregunta]) }}" class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">Editar</a>
                                     </div>
                                     <div>
-                                        <form class="eliminar" action="/estudios/{{ $estudio->id }}/encuestas/{{ $encuesta->id }}/preguntas/{{ $pregunta->id }}/eliminar" method="POST">
+                                        <form class="eliminar" action="{{ route('preguntas.delete',['estudio'=>$estudio,'encuesta'=>$encuesta,'pregunta'=>$pregunta]) }}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" id="btn_eliminar" class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">Eliminar</button>
