@@ -20,9 +20,9 @@ class PollController extends Controller
         return view('poll.create', compact('estudio'));
     }
 
-    public function store(Estudio $estudio)
+    public function store(Request $request, Estudio $estudio)
     {
-        $data = request()->validate([
+        $data = $request->validate([
             'titulo' => 'required',
             'descripcion' => 'required',
         ]);

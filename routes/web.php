@@ -22,10 +22,15 @@ Route::get('/', function () {
 });
 
 //---------ESTUDIOS
-Route::get('/dashboard', function () {
+/*Route::get('/dashboard', function () {
     $estudios = auth()->user()->estudios;
     return view('dashboard', compact('estudios'));
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');*/
+
+Route::get(
+    '/dashboard',
+    'App\Http\Controllers\EstudioController@index'
+)->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get(
     '/estudios/crear',

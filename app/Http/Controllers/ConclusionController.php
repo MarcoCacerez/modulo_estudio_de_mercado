@@ -19,9 +19,9 @@ class ConclusionController extends Controller
         return view('conclusion.create', compact('estudio'));
     }
 
-    public function store(Estudio $estudio)
+    public function store(Request $request, Estudio $estudio)
     {
-        $data = request()->validate([
+        $data = $request->validate([
             'conclusion' => 'required',
         ]);
 

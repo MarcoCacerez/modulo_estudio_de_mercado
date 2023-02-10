@@ -4,25 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Estudio;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class EstudioController extends Controller
 {
     //
+
+    public function index() {
+        $estudios = auth()->user()->estudios;
+        return view('dashboard', compact('estudios'));
+    }
+
     public function create()
     {
         return view('estudio.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $data = request()->validate([
+        $data = $request->validate([
             'nombre' => 'required',
             'objetivo' => 'required',
             'objetivos_especificos' => 'required',
             'especificacion' => 'required',
         ]);
 
-        $estudio = auth()->user()->estudios()->create($data);
+        $user = Auth::user();
+        $user->estudios()->create($data);
 
         return redirect('/dashboard');
     }
