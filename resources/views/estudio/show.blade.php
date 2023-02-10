@@ -20,7 +20,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="mb-6">
-                        <form action="/estudios/{{ $estudio->id }}/actualizar" method="POST">
+                        <form action="{{ route('estudios.update',['estudio'=>$estudio]) }}" method="POST">
                             @method('PATCH')
                             @csrf
                             <div class="mb-6">

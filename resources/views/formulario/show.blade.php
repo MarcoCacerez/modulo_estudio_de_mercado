@@ -4,7 +4,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl text-center">{{ $encuesta->titulo }}</h1>
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form action="/formularios/{{ $encuesta->id }}-{{ Str::slug($encuesta->titulo) }}" method="POST">
+                    <form action="{{ route('formulario.store',['encuesta'=>$encuesta,'slug'=>Str::slug($encuesta->titulo)]) }}" method="POST">
                         @csrf
                         @foreach ($encuesta->preguntas as $key=>$pregunta)
                             <div class="mb-6">

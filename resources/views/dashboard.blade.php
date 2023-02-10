@@ -7,7 +7,7 @@
                 </h2>
             </div>
             <div>
-                <a href="/estudios/crear"
+                <a href=" {{ route('estudios.create') }}"
                 class="text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 font-bold focus:ring-blue-300 rounded-lg text-base px-5 py-2.5 mr-2 mb-2">
                     Crear estudio de mercado
                 </a>
@@ -33,14 +33,14 @@
                                                     <h2 class="text-base font-medium text-blue-400 mb-1">Creado el: {{ $estudio->created_at->format('d/m/Y') }}</h2>
                                                     <p class="leading-relaxed mb-3">{{ $estudio->objetivo }}</p>
                                                     <div class="flex items-center flex-wrap relative">
-                                                        <a class="text-blue-400 inline-flex items-center md:mb-2 lg:mb-0" href='/estudios/{{ $estudio->id }}/detalles'>Detalles
+                                                        <a class="text-blue-400 inline-flex items-center md:mb-2 lg:mb-0" href="{{ route('estudios.show',['estudio'=>$estudio]) }}">Detalles
                                                             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
                                                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                                 <path d="M5 12h14"></path>
                                                                 <path d="M12 5l7 7-7 7"></path>
                                                             </svg>
                                                         </a>
-                                                        <form class="eliminar" action="/estudios/{{ $estudio->id }}/eliminar" method="POST">
+                                                        <form class="eliminar" action="{{ route('estudios.delete',['estudio'=>$estudio])  }}" method="POST">
                                                             @method('DELETE')
                                                             @csrf
                                                             <button>
